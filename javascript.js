@@ -17,3 +17,20 @@ function mul(a, b) {
 function div(a, b) {
   return a / b;
 }
+
+function operate(o, a, b) {
+  switch (o) {
+    case "+":
+      return add(a, b);
+      break;
+    case "-":
+      return sub(a, b);
+      break;
+    case "*":
+      return mul(a, b);
+      break;
+    case "/":
+      return div(a, b);
+      break;
+  }
+}

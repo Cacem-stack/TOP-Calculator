@@ -1,0 +1,50 @@
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 100vh;
+}
+.margin {
+  border: solid red 1px;
+  flex: 2 1 auto;
+}
+
+.calc {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  height: 50vh;
+  width: 15vh;
+}
+
+.calc > * {
+  border: solid black 1px;
+}
+
+.row {
+  display: flex;
+  flex-grow: 2;
+}
+
+.one {
+  flex-grow: 1;
+}
+
+
+.button {
+  border: solid green 1px;
+  flex: 1 1 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+}
+
+.display {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 10px;
+  border: solid black 2px;
+  font-size: 1.3rem;
+}

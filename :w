@@ -18,10 +18,6 @@ function cl() {
   display.textContent = 0;
 }
 
-function round(n) {
-  Math.round(n * 1000) / 1000;
-}
-
 clear.addEventListener('click', cl)
 
 numbers.forEach((button) => {
@@ -30,33 +26,22 @@ numbers.forEach((button) => {
     } else {
     numObj[state] += button.textContent;
     }
-    trim();
+    if (numObj[state].length > 8) {
+      numObj[state] = numObj[state].slice(1);
+    }
+    display.textContent = numObj[state];
   })
 });
-
-function trim() {
-  if (numObj.one.length > 8) {
-    numObj.one = numObj.one.substr(numObj.one.length - 8);
-  }
-  if (numObj.two.length > 8) {
-    numObj.two = numObj.two.substr(numObj.two.length - 8)
-  }
-  display.textContent = numObj[state];
-
-}
 
 operators.forEach((operator) => {
   let o = operator.textContent;
   operator.addEventListener('click', () => {
     if (numObj.two != "" && o != "=") {
-      console.log(`if; n.two: '${numObj.two}' o: '${o}'`);
       numObj.one = operate(numObj.operator, +numObj.one, +numObj.two);
-      numObj.one = numObj.one.toString();
       numObj.two = "";
-      trim();
-      display.textContent = numObj.one;
+      console.log("if");
     } else {
-      console.log(`else; n.two: '${numObj.two}' o: '${o}'`);
+      console.log("else");
       state = "two";
       switch (o) {
         case '+':
@@ -71,19 +56,11 @@ operators.forEach((operator) => {
         case '-':
           break;
           numObj.operator = '-';
-        case '.':
-          state = "one";
-          numObj[state] += '.'
-          display.textContent = numObj[state];
-          break;
         case '=':
-          if (numObj.two == "") {
-          } else {
-            numObj.one = operate(numObj.operator, +numObj.one, +numObj.two);
-            numObj.one = numObj.one.toString();
-            trim()
-            display.textContent = numObj.one;
-          }
+          if (num)
+          let temp = operate(numObj.operator, +numObj.one, +numObj.two);
+          cl()
+          display.textContent  = temp;
           break;
       }
     }
